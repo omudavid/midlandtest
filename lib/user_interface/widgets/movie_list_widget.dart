@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../repository/models/search_response.dart';
+import '../../repository/models/SearchMovieResponse.dart';
 import 'movie_card.dart';
 
 class MovieListWidget extends StatelessWidget {
   const MovieListWidget({Key? key, required this.movieResults})
       : super(key: key);
 
-  final List<Movie> movieResults;
+  final List<Results> movieResults;
 
   @override
   Widget build(BuildContext context) {

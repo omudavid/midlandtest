@@ -7,13 +7,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:midland_test/bloc/movie_details_cubit/movie_details_cubit.dart';
 import 'package:midland_test/bloc/movie_details_cubit/movie_details_state.dart';
 
-import '../../repository/models/search_response.dart';
+import '../../repository/models/SearchMovieResponse.dart';
 import '../widgets/details_flexible_space.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   const MovieDetailsScreen({Key? key, required this.movie}) : super(key: key);
 
-  final Movie movie;
+  final Results movie;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +27,6 @@ class MovieDetailsScreen extends StatelessWidget {
               expandedHeight: MediaQuery.of(context).size.height * 0.4,
               leading: BackButton(),
               actions: [
-                IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      movie.scoreAverage?.toString() ?? '',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                  onPressed: () {},
-                ),
                 IconButton(
                   icon: SvgPicture.asset(
                     'assets/images/heart.svg',
@@ -74,10 +60,10 @@ class MovieDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Synopsis',
+                      'Title type',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(state.movieDetails.description ?? 'Not available'),
+                    Text(state.movieDetails.titleType ?? 'Not available'),
                     SizedBox(
                       height: 10,
                     ),
@@ -94,16 +80,16 @@ class MovieDetailsScreen extends StatelessWidget {
                       'Runtime',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(state.movieDetails.runtime?.toString() ??
+                    Text(state.movieDetails.runningTimeInMinutes?.toString() ??
                         'Not available'),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      'Score average',
+                      'End year',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(state.movieDetails.scoreAverage?.toString() ??
+                    Text(state.movieDetails.seriesEndYear?.toString() ??
                         'Not available'),
                   ],
                 );

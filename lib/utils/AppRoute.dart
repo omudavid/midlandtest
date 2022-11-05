@@ -6,6 +6,7 @@ import 'package:midland_test/user_interface/screens/home_screen.dart';
 import 'package:midland_test/utils/routes.dart';
 import 'package:midland_test/utils/service_locator.dart';
 
+import '../repository/models/SearchMovieResponse.dart';
 import '../repository/models/search_response.dart';
 import '../user_interface/screens/description_screen.dart';
 
@@ -18,13 +19,12 @@ class AppRoute {
         );
       case RouteNames.movieDetails:
         final args = routeSettings.arguments as Map;
-        final Movie movie = args['movie'];
+        final Results movie = args['movie'];
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
               lazy: false,
               create: (_) => MovieDetailsCubit(
-                  repository: serviceLocator<MovieRepository>(),
-                  id: movie.tmdbid!.toInt()),
+                  repository: serviceLocator<MovieRepository>(), id: movie.id!),
               child: MovieDetailsScreen(
                 movie: movie,
               )),

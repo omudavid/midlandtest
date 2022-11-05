@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:midland_test/repository/models/movie_details_response.dart';
 
+import '../../repository/models/DetailsResponse.dart';
+
 abstract class MovieDetailsState extends Equatable {}
 
 class MovieDetailsInitState extends MovieDetailsState {
@@ -14,7 +16,7 @@ class MovieDetailsLoadingState extends MovieDetailsState {
 }
 
 class MovieDetailsLoadedState extends MovieDetailsState {
-  final MovieDetailsResponse movieDetails;
+  final DetailsResponse movieDetails;
 
   MovieDetailsLoadedState(this.movieDetails);
   @override

@@ -4,17 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/movie_details_cubit/movie_details_cubit.dart';
 import '../../bloc/movie_details_cubit/movie_details_state.dart';
-import '../../repository/models/search_response.dart';
+import '../../repository/models/SearchMovieResponse.dart';
 
 class DetailsFlexibleSpace extends StatelessWidget {
   const DetailsFlexibleSpace({Key? key, required this.movie}) : super(key: key);
 
-  final Movie movie;
+  final Results movie;
 
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
-      title: Text(movie.title ?? ''),
+      title: Text(movie.l ?? ''),
       background: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
         builder: (_, state) {
           if (state is MovieDetailsLoadedState) {
@@ -23,7 +23,7 @@ class DetailsFlexibleSpace extends StatelessWidget {
                 'assets/images/blank.jpeg',
                 fit: BoxFit.cover,
               ),
-              imageUrl: state.movieDetails.poster ?? '',
+              imageUrl: state.movieDetails.image?.url ?? '',
               fit: BoxFit.cover,
             );
           }

@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:midland_test/utils/routes.dart';
 
-import '../../repository/models/search_response.dart';
+import '../../repository/models/SearchMovieResponse.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({Key? key, required this.movie}) : super(key: key);
 
-  final Movie movie;
+  final Results movie;
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +25,13 @@ class MovieCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                'assets/images/venom.jpeg',
+              child: CachedNetworkImage(
+                imageUrl: movie.i?.imageUrl ?? '',
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              left: 20,
-              top: 20,
-              child: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Text(
-                  movie.scoreAverage?.toString() ?? '',
-                ),
+                errorWidget: (_, str, err) =>
+                    Image.asset('assets/images/blank.jpeg'),
               ),
             ),
             Positioned(
@@ -62,7 +51,7 @@ class MovieCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        movie.title ?? '',
+                        movie.l ?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),
                       ),

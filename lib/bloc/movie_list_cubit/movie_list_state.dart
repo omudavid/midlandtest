@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../repository/models/SearchMovieResponse.dart';
 import '../../repository/models/search_response.dart';
 
 abstract class MovieListState extends Equatable {}
@@ -15,7 +16,7 @@ class MovieListLoadingState extends MovieListState {
 }
 
 class MovieListLoadedState extends MovieListState {
-  final List<Movie> movieResults;
+  final List<Results> movieResults;
 
   MovieListLoadedState(this.movieResults);
   @override

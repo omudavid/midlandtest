@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:midland_test/bloc/movie_list_cubit/movie_list_state.dart';
 
@@ -19,6 +21,7 @@ class MovieListCubit extends Cubit<MovieListState> {
     await repository.searchMovies(query).then((value) {
       emit(MovieListLoadedState(value));
     }).catchError((e) {
+      log(e.toString());
       emit(MovieListFailedState());
     });
   }

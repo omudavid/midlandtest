@@ -5,7 +5,7 @@ import 'movie_details_state.dart';
 
 class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   final MovieRepository repository;
-  final int id;
+  final String id;
 
   MovieDetailsCubit({
     required this.repository,
