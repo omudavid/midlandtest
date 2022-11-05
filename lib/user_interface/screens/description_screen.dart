@@ -96,6 +96,9 @@ class MovieDetailsScreen extends StatelessWidget {
                     ),
                     Text(state.movieDetails.runtime?.toString() ??
                         'Not available'),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Score average',
                       style: TextStyle(fontWeight: FontWeight.bold),
